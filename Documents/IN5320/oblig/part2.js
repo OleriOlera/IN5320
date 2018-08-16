@@ -1,60 +1,17 @@
-// Creating a close button and appending it to each list item.
-var nodeList = document.getElementsByTagName('li');
-var i;
-for (i = 0; i < nodeList.length; i++){
-    var span = document.createElement('span');
-    var txt = document.createTextNode('X');
-    span.className = 'closebutton';
-    span.appendChild(txt);
-    nodeList[i].appendChild(span);
-}
-
-// Click on a close button to hide the list item
-var closebutton = document.getElementsByClassName('closebutton');
-var i;
-for (i = 0; i < closebutton.length; i++){
-    closebutton[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = 'none';
-    }
-}
-
-function loadList(){
-    console.log('kjører getsavedlist');
-        for (i = 0; i < localStorage.length; i++){
-            var li = document.createElement('li');
-            var savedValue = localStorage.key(i);
-            console.log(savedValue);
-            li.appendChild(document.createTextNode(savedValue));
-            document.getElementById('userlist').appendChild(li);
-            var span = document.createElement('span');
-            var txt = document.createTextNode('X');
-            span.className = 'closebutton';
-            span.appendChild(txt);
-            li.appendChild(span);
-            span.onclick = function() {
-                localStorage.removeItem(savedValue);
-                var div = this.parentElement;
-                div.style.display = 'none';
-                console.log(localStorage);
-                }
-        }
-}
-
-
-
-    
-
 
 // Function for appending the input to the list
 function appendInput(){
+  //creating a list element and appending the input to it
    var li = document.createElement('li');
    var inputValue = document.getElementById('toadd').value;
    var t = document.createTextNode(inputValue);
    li.appendChild(t);
+
+   //if the input is empty, send alert
    if (inputValue === '') {
        alert('Write something in the field to add!');
    } else {
+      //appending the li to the unordered list and emptying the input field
        document.getElementById('userlist').appendChild(li);
        document.getElementById('toadd').value = '';
        // Creating a close button for the element just added
@@ -63,24 +20,93 @@ function appendInput(){
        span.className = 'closebutton';
        span.appendChild(txt);
        li.appendChild(span);
-       var id = inputValue;
-       localStorage.setItem(inputValue, li.textContent);
-       console.log(localStorage);
-       console.log(localStorage.key(1));
-       console.log(localStorage);
-    
+
+       //creating an id for the list element to be used to identify it in the local localStorage
+       li.id = Math.floor(Math.random() * (10000 - 0) + 0);
+
+       // creating a JSON object with the value and id to be locally stored
+       var liobj = {
+         value: inputValue,
+         id: li.id
+       };
+       localStorage.setItem(li.id, JSON.stringify(liobj));
+
+       // adding funciton for removing li element
        span.onclick = function() {
-        localStorage.removeItem(inputValue);
+        localStorage.removeItem(this.parentElement.id);
         var div = this.parentElement;
         div.style.display = 'none';
         console.log(localStorage);
         }
    }
-   /*for(i = 0; i < closebutton.length; i++){
-       closebutton[i].onclick = function() {
-           localStorage.removeItem([i]);
-           var div = this.parentElement;
-           div.style.display = 'none';
-       }
-   }*/
+}
+
+//funciton for loading the list from local storage
+function loadList(){
+        //for every element in localstorage
+        for (i = 0; i < localStorage.length; i++){
+            var li = document.createElement('li');
+            //parsing the object saved on position[i]
+            var liobj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            //setting the id
+            li.id = liobj.id;
+            //setting the text
+            li.appendChild(document.createTextNode(liobj.value));
+            //appending to the list
+            var ul = document.getElementById('userlist');
+            ul.appendChild(li);
+            //creating delete button
+            var span = document.createElement('span');
+            var txt = document.createTextNode('X');
+            span.className = 'closebutton';
+            span.appendChild(txt);
+            li.appendChild(span);
+            span.onclick = function() {
+                localStorage.removeItem(this.parentElement.id);
+                var div = this.parentElement;
+                div.style.display = 'none';
+                console.log(localStorage);
+                }
+        }
+}
+
+//function for populating a list
+function populator(s) {
+  var li = document.createElement('li');
+  li.appendChild(document.createTextNode(s));
+  var ul = document.getElementById('userlist2');
+  ul.appendChild(li);
+  console.log('hallo');
+}
+
+//function for applying a function to elements in a List
+function applytoAll(onthis, applythis) {
+ for(i = 0; i < onthis.length; i++){
+   applythis(onthis[i]);
+ }
+}
+
+function ifirooms() {
+  var rooms = [
+    'Euler',
+    'Java',
+    'C',
+    'Shell',
+    'Lisp',
+    'Scheme',
+    'Simula',
+    'Smalltalk'
+  ];
+  applytoAll(rooms, populator);
+}
+
+function searchList(){
+  console.log('heeh');
+  var input = document.getElementById('search');
+  var filter = input.value.toUpperCase();
+  var ul = document.getElementById('userlist2');
+  var li = ul.getElementsByTagName('li');
+  /*for(i = 0; i < li.length; i++){
+    if(str.startsWith(li[i])
+  }*/
 }
