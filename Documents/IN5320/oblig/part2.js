@@ -69,6 +69,16 @@ function loadList(){
                 }
         }
 }
+var rooms = [
+  'Euler',
+  'Java',
+  'C',
+  'Shell',
+  'Lisp',
+  'Scheme',
+  'Simula',
+  'Smalltalk'
+];
 
 //function for populating a list
 function populator(s) {
@@ -87,26 +97,47 @@ function applytoAll(onthis, applythis) {
 }
 
 function ifirooms() {
-  var rooms = [
-    'Euler',
-    'Java',
-    'C',
-    'Shell',
-    'Lisp',
-    'Scheme',
-    'Simula',
-    'Smalltalk'
-  ];
   applytoAll(rooms, populator);
 }
 
-function searchList(){
-  console.log('heeh');
-  var input = document.getElementById('search');
-  var filter = input.value.toUpperCase();
-  var ul = document.getElementById('userlist2');
-  var li = ul.getElementsByTagName('li');
-  /*for(i = 0; i < li.length; i++){
-    if(str.startsWith(li[i])
-  }*/
+function startsWith(element, searchWord){
+  return element.startsWith(searchWord);
 }
+
+function search(list, searchWord){
+  var results = [];
+  for(i = 0; i < list.length; i++){
+    listtext = list[i].toLowerCase();
+    usersSearch = searchWord.toLowerCase();
+    if(startsWith(listtext, usersSearch)){
+      results.push(list[i]);
+    }
+  }
+  return results;
+}
+
+function usersearch(){
+  console.log("hm");
+  var inputValue = document.getElementById('search').value;
+  var ul = document.getElementById('userlist2');
+  ul.innerHTML = '';
+  var newlist = search(rooms, inputValue);
+  applytoAll(newlist, populator);
+};
+
+function getPopulation(){
+  var inputValue = document.getElementById('countrytoadd').value;
+  var xhttp = new XMLHttpRequest();
+  var d = new Date();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200){
+      console.log(JSON.parse(this.response));
+    }
+  }
+  xhttp.open('GET', 'http://api.population.io/1.0/population/' + inputValue + '/'
+   + d.getFullYear() + '-' + d.getMonth() + '-'  + d.getDate() + '/?format=json');
+   xhttp.send();
+};
+
+
+
