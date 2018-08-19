@@ -1,0 +1,306 @@
+* {
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+body{
+    margin: 0;
+    background-color: #86aaca;
+    text-align: center;
+}
+
+.header{
+    text-align: center;
+}
+
+.toph1{
+    background-color: #ffbfa3;
+    color: #f9f9fa;
+    padding: 0;
+    margin: 0;
+    font-family: serif;
+}
+
+.h1{
+    background-color: #86aaca;
+    color: #43484d;
+    padding: 0;
+    margin: 0;
+    font-family: serif;
+}
+
+h2{
+  background-color: #86aaca;
+  color: #43484d;
+  padding: 0;
+  margin: 10px;
+  font font-family: serif;
+
+}
+
+.topnavfrontpage{
+    display: flex;
+    width: 50%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    align-items: center;
+}
+
+.topnavfrontpage li{
+    float: left;
+}
+
+.topnavfrontpage a{
+    padding: 10px;
+    display: inline-block;
+    background-color: #86aaca;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: 0.2s;
+}
+
+.topnavfrontpage a:hover{
+  background-color: #ffbfa3;
+}
+
+.topnav{
+    background-color: #86aaca;
+    color: #ffffff;
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+
+.topnav li{
+    float: left;
+}
+
+.topnav a{
+    padding: 10px;
+    display: inline-block;
+    background-color: #86aaca;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    transition: 0.2s;
+}
+
+.topnav a:hover{
+    background-color: #ffbfa3;
+}
+
+.column3{
+    float: left;
+    width: 29%;
+    padding: 0;
+    margin: 2%;
+    background-color: #ffffff;
+  }
+
+.column3 h2{
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+    color: #43484d;
+    font-family: serif;
+}
+
+.column3 p{
+    padding: 15px;
+}
+
+.column2{
+    float: left;
+    width: 48%;
+    padding: 0;
+    margin: 1%;
+    background-color: #ffffff;
+}
+
+.column2 h2{
+    padding: 0;
+    margin: 0;
+    background-color: #86aaca;
+    color: white;
+}
+
+.column2 h2 a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.column2 p{
+    padding: 15px;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.profileimg{
+    float: right;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    image-rendering: auto;
+
+}
+
+.profileimg img{
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
+.profileimg figcaption{
+    color: white;
+}
+
+.inputcontainer{
+    float: left;
+    width: 48%;
+    margin: 1%;
+    padding: 0;
+}
+
+.inputcontainer input{
+    font-size: 16px;
+    float: left;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    height: 38px;
+}
+.addbutton{
+    font-size: 16px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+    height: 38px;
+    border:none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    background-color: #ffbfa3;
+}
+
+.closebutton{
+    right: 0;
+    top:0;
+    padding: 10px;
+    background-color: #ffbfa3;
+    color: white;
+    width: 10%;
+    float: left;
+    cursor: pointer;
+}
+
+.userliststyle{
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.userliststyle div{
+    width: 100;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.userliststyle li{
+    list-style-type: none;
+    cursor: pointer;
+    float:left;
+    padding: 10px;
+    background-color: white;
+    transition: 0.2s;
+    width: 90%;
+    height: inherit;
+}
+
+.userliststyle div li:nth-child(odd){
+    background-color: #f9f9fa;
+}
+
+.userlistcontainer{
+  width: 48%;
+  float: left;
+  margin: 1%;
+  padding: 0;
+}
+@media screen and (max-width:800px){
+    .column3{
+        width: 46%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .column3{
+        width: 100%;
+    }
+    .profileimg{
+        width: 100%;
+    }
+    .profileimg img{
+        float: none;
+    }
+    .topnavfrontpage{
+        width: 100%;
+        justify-content: center;
+    }
+    .topnavfrontpage li{
+        float: right;
+    }
+    .topnav{
+        width: 100%;
+        justify-content: center;
+    }
+    .topnav li{
+        float: right;
+    }
+    .inputcontainer{
+        width: 100%;
+    }
+    .userliststyle{
+        width: 100%;
+    }
+    .userlistcontainer{
+        width: 100%;
+    }
+}
+
+@media (min-width:1300px){
+    body{
+        width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
