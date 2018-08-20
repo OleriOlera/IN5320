@@ -9,6 +9,18 @@ body{
     text-align: center;
 }
 
+.contentbox{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #86aaca;
+}
+
+.contentbox2{
+    background-color: #86aaca;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
 .header{
     text-align: center;
 }
