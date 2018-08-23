@@ -94,11 +94,7 @@ function populator(s) {
 }
 
 //function for applying a function to elements in a List
-function applytoAll(onthis, applythis) {
- for(i = 0; i < onthis.length; i++){
-   applythis(onthis[i]);
- }
-}
+const applytoAll = (onthis, applythis) => {onthis.map(applythis)};
 
 function ifirooms() {
   applytoAll(rooms, populator);

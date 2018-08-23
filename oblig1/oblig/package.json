@@ -1,0 +1,16 @@
+{
+  "name": "oblig1",
+  "version": "1.0.0",
+  "description": "hmm",
+  "main": "index.js",
+  "scripts": {
+    "test": "testst"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
